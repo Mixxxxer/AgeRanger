@@ -1,9 +1,17 @@
 ﻿using System.Web.Mvc;
+using AgeRanger.Domain.Services;
 
 namespace AgeRanger.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IRangeService rangeService;
+
+        public HomeController(IRangeService rangeService)
+        {
+            this.rangeService = rangeService;
+        }
+
         public ActionResult Index()
         {
             return View();

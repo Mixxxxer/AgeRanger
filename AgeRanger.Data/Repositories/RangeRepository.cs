@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using AgeRanger.Entities;
 using AgeRanger.Interfaces.Data.Contexts;
@@ -27,12 +28,24 @@ namespace AgeRanger.Data.Repositories
 
         public IEnumerable<AgeGroup> GetAgeGroups()
         {
-            return dbContext.AgeGroups.ToList();
+            var agegroups = dbContext.AgeGroups.Select(group => new AgeGroup()
+                {
+                    Id = group.Id,
+                    MinAge = group.MinAge ?? 0,
+                    MaxAge = group.MaxAge ?? int.MaxValue,
+                    Description = group.Description ?? string.Empty
+                })
+                .AsNoTracking()
+                .ToList();
+
+            return agegroups;
         }
 
         public IEnumerable<Person> GetPersons()
         {
-            return dbContext.Persons.ToList();
+            return dbContext.Persons
+                .AsNoTracking()
+                .ToList();
         }
 
         #endregion

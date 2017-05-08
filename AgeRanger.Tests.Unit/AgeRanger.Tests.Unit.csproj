@@ -35,12 +35,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core.4.0.0\lib\net45\Castle.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="FluentAssertions, Version=4.19.2.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
       <HintPath>..\packages\FluentAssertions.4.19.2\lib\net45\FluentAssertions.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="FluentAssertions.Core, Version=4.19.2.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
       <HintPath>..\packages\FluentAssertions.4.19.2\lib\net45\FluentAssertions.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Moq, Version=4.7.10.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <HintPath>..\packages\Moq.4.7.10\lib\net45\Moq.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -71,9 +79,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AgeRanger.Domain\AgeRanger.Domain.csproj">
+      <Project>{c4ee205a-5c54-47c2-9bac-1056f2fa88b7}</Project>
+      <Name>AgeRanger.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AgeRanger.Entities\AgeRanger.Entities.csproj">
       <Project>{9180f571-4254-4eec-ad84-8d25d609941d}</Project>
       <Name>AgeRanger.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgeRanger.Interfaces\AgeRanger.Interfaces.csproj">
+      <Project>{204ba21f-3afc-4b21-8574-a89c425cc05a}</Project>
+      <Name>AgeRanger.Interfaces</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

@@ -7,6 +7,7 @@ namespace AgeRanger.App_Start
 {
     using System;
     using System.Web;
+    using System.Web.Http;
 
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 
@@ -37,6 +38,9 @@ namespace AgeRanger.App_Start
             {
                 kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
+
+                GlobalConfiguration.Configuration.DependencyResolver = new 
+                    Ninject.Web.WebApi.NinjectDependencyResolver(kernel);
 
                 return kernel;
             }
