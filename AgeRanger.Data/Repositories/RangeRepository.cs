@@ -48,6 +48,13 @@ namespace AgeRanger.Data.Repositories
                 .ToList();
         }
 
+        public Person GetPerson(long id)
+        {
+            return dbContext.Persons
+                .AsNoTracking()
+                .FirstOrDefault(person => person.Id == id);
+        }
+        
         #endregion
     }
 }

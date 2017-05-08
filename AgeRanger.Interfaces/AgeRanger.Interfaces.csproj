@@ -55,7 +55,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Domain\" />
+    <Folder Include="Domain\Services\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -72,7 +72,7 @@
   <ItemGroup>
     <Compile Include="Data\Entities\AgeGroupTests.cs" />
     <Compile Include="Data\Entities\PersonTests.cs" />
-    <Compile Include="Domain\Services\RangeServiceTests.cs" />
+    <Compile Include="Domain\Services\PersonServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

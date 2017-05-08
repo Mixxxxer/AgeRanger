@@ -5,11 +5,11 @@ namespace AgeRanger.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IRangeService rangeService;
+        private readonly IPersonService personService;
 
-        public HomeController(IRangeService rangeService)
+        public HomeController(IPersonService personService)
         {
-            this.rangeService = rangeService;
+            this.personService = personService;
         }
 
         public ActionResult Index()

@@ -11,7 +11,7 @@ using Moq;
 namespace AgeRanger.Tests.Unit.Domain.Services
 {
     [TestClass]
-    public class RangeServiceTests
+    public class PersonServiceTests
     {
         private Mock<IRangeRepository> mockRepo;
 
@@ -37,7 +37,7 @@ namespace AgeRanger.Tests.Unit.Domain.Services
                 new Person() { Id = 1, Age = 1, FirstName = "Bob", LastName = "Jones" }
             });
 
-            var service = new RangeService(mockRepo.Object);
+            var service = new PersonService(mockRepo.Object);
 
             var persons = service.GetPersons();
 
@@ -57,7 +57,7 @@ namespace AgeRanger.Tests.Unit.Domain.Services
                 new Person() { Id = 1, Age = 3, FirstName = "Billy", LastName = "Jean" }
             });
 
-            var service = new RangeService(mockRepo.Object);
+            var service = new PersonService(mockRepo.Object);
 
             var persons = service.GetPersons();
 
@@ -77,7 +77,7 @@ namespace AgeRanger.Tests.Unit.Domain.Services
                 new Person() { Id = 1, Age = 5000, FirstName = "Mary", LastName = "Sue" }
             });
 
-            var service = new RangeService(mockRepo.Object);
+            var service = new PersonService(mockRepo.Object);
 
             var persons = service.GetPersons();
 
@@ -99,7 +99,7 @@ namespace AgeRanger.Tests.Unit.Domain.Services
                 new Person() { Id = 1, Age = 5000, FirstName = "Mary", LastName = "Sue" }
             });
 
-            var service = new RangeService(mockRepo.Object);
+            var service = new PersonService(mockRepo.Object);
 
             var persons = service.GetPersons();
 
@@ -120,7 +120,7 @@ namespace AgeRanger.Tests.Unit.Domain.Services
                 new Person() { Id = 1, Age = 22, FirstName = "Bob", LastName = "Jones" }
             });
 
-            var service = new RangeService(mockRepo.Object);
+            var service = new PersonService(mockRepo.Object);
 
             service.GetPersons();
         }

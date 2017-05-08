@@ -8,13 +8,17 @@ namespace AgeRanger.Interfaces.Data.Repositories
         /// <summary>
         /// Returns a list of all Age Groups
         /// </summary>
-        /// <returns></returns>
         IEnumerable<AgeGroup> GetAgeGroups();
 
         /// <summary>
         /// Returns a list of all Persons
         /// </summary>
-        /// <returns></returns>
         IEnumerable<Person> GetPersons();
+
+        /// <summary>
+        /// Finds a given person based on their Id
+        /// </summary>
+        /// <param name="id"></param>
+        Person GetPerson(long id);
     }
 }

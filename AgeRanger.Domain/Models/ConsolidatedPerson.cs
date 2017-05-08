@@ -1,6 +1,6 @@
 ﻿namespace AgeRanger.Domain.Models
 {
-    public class Person
+    public class ConsolidatedPerson
     {
         public long Id { get; set; }
 

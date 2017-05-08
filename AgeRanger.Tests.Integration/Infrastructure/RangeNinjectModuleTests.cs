@@ -47,7 +47,7 @@ namespace AgeRanger.Tests.Integration.Infrastructure
         [TestCategory("Integration-Infrastructure")]
         public void Ninject_Kernel_Should_Return_Range_Service()
         {
-            var service = kernel.Get<IRangeService>();
+            var service = kernel.Get<IPersonService>();
 
             service.Should().NotBeNull();
 

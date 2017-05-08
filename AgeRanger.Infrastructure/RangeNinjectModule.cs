@@ -15,7 +15,7 @@ namespace AgeRanger.Infrastructure
             Bind<IRangeDbContext>().To<RangeDbContext>();
             Bind<IRangeRepository>().To<RangeRepository>();
 
-            Bind<IRangeService>().To<RangeService>();
+            Bind<IPersonService>().To<PersonService>();
         }
     }
 }
