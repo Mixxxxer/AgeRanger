@@ -32,7 +32,6 @@ namespace AgeRanger.Controllers
             return View();
         }
 
-        [HttpPost]
         public ActionResult AddPerson(ConsolidatedPerson person)
         {
             if (ModelState.IsValid)
@@ -47,7 +46,6 @@ namespace AgeRanger.Controllers
             return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
         }
 
-        [HttpPost]
         public ActionResult DeletePerson(long id)
         {
             var person = personService.GetPerson(id);
@@ -68,8 +66,6 @@ namespace AgeRanger.Controllers
             return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
 
-
-        [HttpGet]
         public JsonResult GetAllPersons()
         {
             var persons = personService.GetPersons().Select(x => new PersonViewModel()
@@ -83,8 +79,7 @@ namespace AgeRanger.Controllers
 
             return Json(persons, JsonRequestBehavior.AllowGet);
         }
-
-        [HttpPost]
+        
         public JsonResult GetPerson(long id)
         {
             var person = personService.GetPerson(id);
@@ -103,7 +98,6 @@ namespace AgeRanger.Controllers
             }, JsonRequestBehavior.AllowGet);
         }
 
-        [HttpPost]
         public ActionResult UpdatePerson(ConsolidatedPerson person)
         {
             try

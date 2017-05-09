@@ -8,7 +8,7 @@
             $scope.persons = person.data;
         }, function (data) {
             debugger;
-            alert('Error in getting records');
+            alert("Error retrieving records from controller");
         });
     }
 
@@ -25,7 +25,7 @@
             $scope.divChange = true;
         }, function (data) {
             debugger;
-            alert('Error in getting record');
+            alert("Error getting record to edit");
         });
     }
 
@@ -47,7 +47,7 @@
                 $scope.divChange = false;
             }, function (data) {
                 debugger;
-                alert('Error in updating record');
+                alert("Error updating record");
             });
         }
         else
@@ -58,7 +58,7 @@
                 $scope.divChange = false;
             }, function (data) {
                 debugger;
-                alert('Error in adding book record');
+                alert('Error adding record');
             });
         }
     }
@@ -76,7 +76,7 @@
             getAllPersons();
         }, function (data) {
             debugger;
-            alert('Error in deleting record');
+            alert("Error deleting record");
         });
     }
 
@@ -89,6 +89,11 @@
     }
 
     $scope.cancel = function () {
+        $scope.divChange = false;
+    };
+
+    $scope.resetFilter = function() {
+        $scope.filter = "";
         $scope.divChange = false;
     };
 });

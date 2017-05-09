@@ -19,6 +19,7 @@ Wanted to add more of a wholistic view so decided to sacrifice some time on doin
 **Extras**
 
 1. [Done] Edit and Delete functionality with minial effort. Reusable for WebAPI 
+2. [Done] Confirmed functionality in Chrome, IE and Edge. 
 
 **Solution Structure**
 *Projects*
@@ -52,8 +53,15 @@ Only listing packages that I spesifically added.
 2. Duplicate check when adding new person
 3. Error Handling in PersonController to improve feedback to UI
 4. ModelState Validation and display on UI
-5. Test Coverage - JavaScript portions of the code can use Jasmin / Chutzpa or similar
-6. Test Coverage - Remaining C# Portions of the Code
+5 Sleek popups for when saving, delting or editing occured
+6 Confirmation dialogs where appropriate
+
+**Testing Things TODO**
+
+1. Test Coverage - JavaScript portions of the code can use Jasmin / Chutzpa or similar
+2. Test Coverage - Remaining C# Portions of the Code
+3. Test Coverage - Atomated functional test using Selenium to drive the front end
+4. Browser Based Testing - FireFox and Safari
 
 **Cool Things TODO**
 

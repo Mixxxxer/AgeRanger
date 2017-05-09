@@ -13,9 +13,19 @@
 
 <div ng-controller="personCtrl">
     <div>
-        <p>
-            <b><i>People</i></b>
-        </p>
+        <p><b><i>People</i></b></p>
+        <table class="table table-hover">
+            <tr>
+                <td>
+                    <span>
+                        Start typing to filter : 
+                        <input type="text" name="filter" id="filter" ng-model="filter" ng-change="changeFilter()" class="form-control" style="display: inline"  />
+                        <span ng-click="resetFilter()" class="btn btn-primary">Reset Filter</span>
+                    </span>
+                    
+                </td>
+            </tr>
+        </table>
         <table class="table table-hover">
             <tr>
                 <td><b>ID</b></td>
@@ -24,7 +34,7 @@
                 <td><b>Age</b></td>
                 <td><b>Age Group</b></td>
             </tr>
-            <tr ng-repeat="person in persons">
+            <tr ng-repeat="person in persons | filter: filter">
                 <td>
                     {{person.Id}}
                 </td>
@@ -46,7 +56,7 @@
                 </td>
             </tr>
         </table>
-    </div>
+</div>
     <span ng-click="addPersonDiv()" class="btn btn-default">
         Add Person
     </span>
@@ -60,13 +70,13 @@
             </tr>
             <tr>
                 <td>First Name</td>
-                <td><input type="text" ng-model="personFirstName" required /></td>
+                <td><input type="text" ng-model="personFirstName" class="form-control" required /></td>
                 <td>Last Name</td>
-                <td><input type="text" ng-model="personLastName" required /></td>
+                <td><input type="text" ng-model="personLastName" class="form-control" required /></td>
             </tr>
             <tr>
                 <td>Age</td>
-                <td><input type="text" ng-model="personAge" required /></td>
+                <td><input type="text" ng-model="personAge" class="form-control" required /></td>
                 <td />
                 <td />
             </tr>
