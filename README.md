@@ -1,6 +1,6 @@
 **The compromise**
 
-Wanted to add more of a wholistic view so decided to sacrifice some time on doing unit and integration tests to indroduce some automated functional tests as well. Think it is sufficient as longs as the idea is carried across and there is a understanding that its not the final product. Added a TODO section to indicate that additional elements have been throught of but not spesifically implemented.
+Wanted to add more of a wholistic view so decided to sacrifice some time on doing unit and integration tests to introduce autotomated functional tests as well. Think it is sufficient as longs as the idea is carried across and there is a understanding that its not the final product. Added a TODO section to indicate that additional elements have been throught of but not spesifically implemented.
 
 **Requirements**
 
@@ -24,12 +24,12 @@ Wanted to add more of a wholistic view so decided to sacrifice some time on doin
 **Solution Structure**
 *Projects*
 
-AgeRanger - ASP.NET MVC Web Site with a SPA using AngularJS
-AgeRanger.Data - Repository Implementation that we can swap out when the DBA's goto SQL Server
-AgeRanger.Domain - Domain Sriver Design Approach which will house our Factories, Service and much more
-AgeRanger.Entities - Entities that we can reuse
-AgeRanger.Infrastructure - Ninject Modules used for Dependency Injection. This way its easy to test thne bindings
-AgeRanger.Interfaces - Split out Data Interfaces as we want to swap out their implementation later and reuse the entities.
+- AgeRanger - ASP.NET MVC Web Site with a SPA using AngularJS
+- AgeRanger.Data - Repository Implementation that we can swap out when the DBA's goto SQL Server
+- AgeRanger.Domain - Domain Sriver Design Approach which will house our Factories, Service and much more
+- AgeRanger.Entities - Entities that we can reuse
+- AgeRanger.Infrastructure - Ninject Modules used for Dependency Injection. This way its easy to test thne bindings
+- AgeRanger.Interfaces - Split out Data Interfaces as we want to swap out their implementation later and reuse the entities.
 
 *NuGet Packages*
 
