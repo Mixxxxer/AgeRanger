@@ -27,6 +27,11 @@ namespace AgeRanger.Controllers
 
         #region Public Methods
 
+        public ActionResult Index()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ActionResult AddPerson(ConsolidatedPerson person)
         {
