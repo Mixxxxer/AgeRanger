@@ -26,6 +26,14 @@ namespace AgeRanger
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/angularJS").Include(
+                "~/Scripts/angular.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/personsJS").Include(
+                "~/Scripts/persons/personmodule.js",
+                "~/Scripts/persons/personservice.js",
+                "~/Scripts/persons/personcontroller.js"));
         }
     }
 }

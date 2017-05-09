@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using AgeRanger.Domain.Services;
 using AgeRanger.Infrastructure;
+using AgeRanger.Infrastructure.Modules;
 using AgeRanger.Interfaces.Data.Contexts;
 using AgeRanger.Interfaces.Data.Repositories;
 using FluentAssertions;

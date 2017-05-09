@@ -39,5 +39,10 @@ namespace AgeRanger.Data.Contexts
         }
 
         #endregion
+
+        public new void SaveChanges()
+        {
+            base.SaveChanges();
+        }
     }
 }

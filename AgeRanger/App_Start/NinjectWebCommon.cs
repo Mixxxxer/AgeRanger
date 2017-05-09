@@ -1,4 +1,5 @@
 using AgeRanger.Infrastructure;
+using AgeRanger.Infrastructure.Modules;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(AgeRanger.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(AgeRanger.App_Start.NinjectWebCommon), "Stop")]

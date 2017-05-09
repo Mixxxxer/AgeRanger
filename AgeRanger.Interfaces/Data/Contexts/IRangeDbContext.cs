@@ -15,6 +15,8 @@ namespace AgeRanger.Interfaces.Data.Contexts
 
         IDbSet<Person> Persons { get; set; }
 
+        void SaveChanges();
+
         #endregion
     }
 }

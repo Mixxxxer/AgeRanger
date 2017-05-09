@@ -1,17 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Linq;
 using System.Net;
-using System.Net.Http;
-using System.Web.Http;
-
+using System.Web.Mvc;
+using AgeRanger.Domain.Exceptions;
 using AgeRanger.Domain.Models;
 using AgeRanger.Domain.Services;
+using AgeRanger.Models;
 
 namespace AgeRanger.Controllers
 {
-    public class PersonController : ApiController
+    public class PersonController : Controller
     {
-
         private readonly IPersonService personService;
 
         public PersonController(IPersonService personService)
@@ -19,91 +17,89 @@ namespace AgeRanger.Controllers
             this.personService = personService;
         }
            
-        public IEnumerable<ConsolidatedPerson> Get()
+        [HttpGet]
+        public JsonResult GetAllPersons()
         {
-            return personService.GetPersons();
+            var persons = personService.GetPersons().Select(x => new PersonViewModel()
+            {
+                Id = x.Id,
+                FirstName = x.FirstName,
+                LastName = x.LastName,
+                Age = x.Age,
+                AgeRangeDescription = x.AgeRangeDescription
+            });
+
+            return Json(persons, JsonRequestBehavior.AllowGet);
         }
 
-        public ConsolidatedPerson Get(long id)
+        [HttpPost]
+        public JsonResult GetPerson(long id)
         {
             var person = personService.GetPerson(id);
             if (person == null)
             {
-                throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotFound));
+                return Json(null, JsonRequestBehavior.AllowGet);
             }
-            return person;
+
+            return Json(new PersonViewModel()
+            {
+                Id = person.Id,
+                FirstName = person.FirstName,
+                LastName = person.LastName,
+                Age = person.Age,
+                AgeRangeDescription = person.AgeRangeDescription
+            }, JsonRequestBehavior.AllowGet);
         }
 
-        public HttpResponseMessage Post(ConsolidatedPerson person)
+        [HttpPost]
+        public ActionResult AddPerson(ConsolidatedPerson person)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 var result = personService.AddPerson(person);
                 if (result)
                 {
-                    var response = Request.CreateResponse(HttpStatusCode.Created, person);
-                    response.Headers.Location = new Uri(Url.Link("DefaultApi", new { id = person.Id }));
-                    return response;
+                    return new HttpStatusCodeResult(HttpStatusCode.OK);
                 }
-
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
             }
-            
-            return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+
+            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
         }
 
-        public HttpResponseMessage Put(long id, ConsolidatedPerson person)
+        [HttpPost]
+        public ActionResult UpdatePerson(ConsolidatedPerson person)
         {
-            if (!ModelState.IsValid)
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
-            }
-            if (id != person.Id)
-            {
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
-            }
-
             try
             {
-                var result = personService.UpdatePerson(id, person);
-
-                if (result)
-                {
-                    return Request.CreateResponse(HttpStatusCode.OK);
-                }
-
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
+                personService.UpdatePerson(person);
             }
-            catch (Exception exception)
+            catch (PersonException personException)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.NotFound, exception);
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, personException.Message);
             }
+
+            return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
 
-        public HttpResponseMessage Delete(long id)
+        [HttpPost]
+        public ActionResult DeletePerson(long id)
         {
             var person = personService.GetPerson(id);
             if (person == null)
             {
-                return Request.CreateResponse(HttpStatusCode.NotFound);
+                return new HttpStatusCodeResult(HttpStatusCode.NoContent);
             }
 
             try
             {
-                var result = personService.DeletePerson(id);
-
-                if (result)
-                {
-                    return Request.CreateResponse(HttpStatusCode.OK, person);
-                }
-
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
-
+                personService.DeletePerson(id);
             }
-            catch (Exception exception)
+            catch (PersonException personException)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.NotFound, exception);
+                return Json(personException.Message, JsonRequestBehavior.DenyGet);
             }
+
+            return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
     }
 }

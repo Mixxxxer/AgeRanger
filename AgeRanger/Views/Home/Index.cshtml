@@ -1,31 +1,77 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "[People]";
 }
+<p/>
+<style>
+    input.ng-invalid {
+        background-color: lightsteelblue;
+    }
+    input.ng-valid {
+        background-color: ghostwhite;
+    }
+</style>
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
-
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
+<div ng-controller="personCtrl">
+    <div>
         <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
+            <b><i>People</i></b>
         </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        <table class="table table-hover">
+            <tr>
+                <td><b>ID</b></td>
+                <td><b>First Name</b></td>
+                <td><b>Last Name</b></td>
+                <td><b>Age</b></td>
+                <td><b>Age Group</b></td>
+            </tr>
+            <tr ng-repeat="person in persons">
+                <td>
+                    {{person.Id}}
+                </td>
+                <td>
+                    {{person.FirstName}}
+                </td>
+                <td>
+                    {{person.LastName}}
+                </td>
+                <td>
+                    {{person.Age}}
+                </td>
+                <td>
+                    {{person.AgeRangeDescription}}
+                </td>
+                <td>
+                    <span ng-click="editPerson(person)" class="btn btn-primary">Edit</span>
+                    <span ng-click="deletePerson(person)" class="btn btn-danger">Delete</span>
+                </td>
+            </tr>
+        </table>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    <span ng-click="addPersonDiv()" class="btn btn-default">
+        Add Person
+    </span>
+    <div ng-show="divChange">
+        <table class="table">
+            <tr>
+                <td><b><i>{{Action}} Person</i></b></td>
+                <td />
+                <td />
+                <td />
+            </tr>
+            <tr>
+                <td>First Name</td>
+                <td><input type="text" ng-model="personFirstName" required /></td>
+                <td>Last Name</td>
+                <td><input type="text" ng-model="personLastName" required /></td>
+            </tr>
+            <tr>
+                <td>Age</td>
+                <td><input type="text" ng-model="personAge" required /></td>
+                <td />
+                <td />
+            </tr>
+        </table>
+        <input type="button" class="btn btn-default" value="Save" ng-click="addupdatePerson()"/>
+        <input type="button" class="btn btn-danger" value="Cancel" ng-click="cancel()"/>
     </div>
 </div>

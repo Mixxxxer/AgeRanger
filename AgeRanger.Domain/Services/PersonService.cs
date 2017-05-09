@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-
+using AgeRanger.Domain.Exceptions;
 using AgeRanger.Domain.Models;
 using AgeRanger.Entities;
 using AgeRanger.Interfaces.Data.Repositories;
@@ -32,7 +33,7 @@ namespace AgeRanger.Domain.Services
         /// <summary>
         /// Updates the details of a person based on the given Id
         /// </summary>
-        bool UpdatePerson(long id, ConsolidatedPerson person);
+        bool UpdatePerson(ConsolidatedPerson person);
     }
 
     public class PersonService : IPersonService
@@ -46,12 +47,43 @@ namespace AgeRanger.Domain.Services
 
         public bool AddPerson(ConsolidatedPerson person)
         {
-            return false;
+            try
+            {
+                var entity = new Person()
+                {
+                    Id = person.Id,
+                    FirstName = person.FirstName,
+                    LastName = person.LastName,
+                    Age = person.Age
+                };
+
+                rangeRepository.AddPerson(entity);
+            }
+            catch (Exception exception)
+            {
+                throw new PersonException(exception.Message, exception);
+            }
+
+            return true;
         }
 
         public bool DeletePerson(long id)
         {
-            return false;
+            try
+            {
+                var person = rangeRepository.GetPerson(id);
+
+                if (person == null)
+                    return false;
+
+                rangeRepository.DeletePerson(person);
+            }
+            catch (Exception exception)
+            {
+                throw new PersonException(exception.Message, exception);
+            }
+
+            return true;
         }
 
         public string GetDescriptionForAge(IEnumerable<AgeGroup> ageGroups, int age)
@@ -95,9 +127,29 @@ namespace AgeRanger.Domain.Services
             return personRanges.ToList();
         }
 
-        public bool UpdatePerson(long id, ConsolidatedPerson person)
+        public bool UpdatePerson(ConsolidatedPerson person)
         {
-            return false;
+            try
+            {
+                var model = rangeRepository.GetPerson(person.Id);
+
+                if (model == null)
+                    return false;
+
+                rangeRepository.UpdatePerson(model, new Person()
+                {
+                    Id = person.Id,
+                    FirstName = person.FirstName,
+                    LastName = person.LastName,
+                    Age = person.Age
+                });
+            }
+            catch (Exception exception)
+            {
+                throw new PersonException(exception.Message, exception);
+            }
+
+            return true;
         }
     }
 }
