@@ -1,6 +1,12 @@
-**The compromise**
+**General**
 
-Wanted to add more of a wholistic view so decided to sacrifice some time on doing unit and integration tests to introduce autotomated functional tests as well. Think it is sufficient as longs as the idea is carried across and there is a understanding that its not the final product. Added a TODO section to indicate that additional elements have been throught of but not spesifically implemented.
+- Visual Studio 2015 Enterprise
+- Framework 4.5.2
+- Remember to restore the NuGet packagaes before building.
+- May have to change web.config to update the location of the SQLite DB
+- If the DB does not exists, AgeRanger will create and seed it!
+
+Added a TODO section to indicate that additional elements have been throught of but not spesifically implemented. 
 
 **Requirements**
 
