@@ -10,6 +10,8 @@ namespace AgeRanger.Domain.Services
 {
     public interface IPersonService
     {
+        #region Public Methods
+
         /// <summary>
         /// Adds a new person to the repository
         /// </summary>
@@ -34,16 +36,28 @@ namespace AgeRanger.Domain.Services
         /// Updates the details of a person based on the given Id
         /// </summary>
         bool UpdatePerson(ConsolidatedPerson person);
+
+        #endregion  
     }
 
     public class PersonService : IPersonService
     {
+        #region Injected Members
+
         private readonly IRangeRepository rangeRepository;
+
+        #endregion
+
+        #region Constructor
 
         public PersonService(IRangeRepository rangeRepository)
         {
             this.rangeRepository = rangeRepository;
         }
+
+        #endregion
+
+        #region Public Methods
 
         public bool AddPerson(ConsolidatedPerson person)
         {
@@ -151,5 +165,7 @@ namespace AgeRanger.Domain.Services
 
             return true;
         }
+
+        #endregion  
     }
 }

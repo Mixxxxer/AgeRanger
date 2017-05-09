@@ -2,7 +2,6 @@
 using System.Diagnostics.CodeAnalysis;
 using AgeRanger.Entities;
 
-
 namespace AgeRanger.Data.Configuration
 {
     [ExcludeFromCodeCoverage]

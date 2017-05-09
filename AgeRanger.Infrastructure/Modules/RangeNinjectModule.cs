@@ -9,6 +9,8 @@ namespace AgeRanger.Infrastructure.Modules
 {
     public class RangeNinjectModule : NinjectModule
     {
+        #region Public Methods
+
         public override void Load()
         {
             Bind<IRangeDbContext>().To<RangeDbContext>();
@@ -16,5 +18,7 @@ namespace AgeRanger.Infrastructure.Modules
 
             Bind<IPersonService>().To<PersonService>();
         }
+
+        #endregion
     }
 }

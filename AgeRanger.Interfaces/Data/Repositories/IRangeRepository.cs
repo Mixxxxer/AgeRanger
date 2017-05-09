@@ -5,6 +5,8 @@ namespace AgeRanger.Interfaces.Data.Repositories
 {
     public interface IRangeRepository
     {
+        #region Public Methods
+
         /// <summary>
         /// Adds a person to the repository
         /// </summary>
@@ -34,5 +36,7 @@ namespace AgeRanger.Interfaces.Data.Repositories
         /// Updates an existing person
         /// </summary>
         void UpdatePerson(Person original, Person changed);
+
+        #endregion
     }
 }

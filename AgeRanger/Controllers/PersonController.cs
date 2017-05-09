@@ -10,13 +10,60 @@ namespace AgeRanger.Controllers
 {
     public class PersonController : Controller
     {
+        #region Injected Members
+
         private readonly IPersonService personService;
+
+        #endregion
+
+        #region Constructor
 
         public PersonController(IPersonService personService)
         {
             this.personService = personService;
         }
-           
+
+        #endregion
+
+        #region Public Methods
+
+        [HttpPost]
+        public ActionResult AddPerson(ConsolidatedPerson person)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = personService.AddPerson(person);
+                if (result)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.OK);
+                }
+            }
+
+            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        }
+
+        [HttpPost]
+        public ActionResult DeletePerson(long id)
+        {
+            var person = personService.GetPerson(id);
+            if (person == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.NoContent);
+            }
+
+            try
+            {
+                personService.DeletePerson(id);
+            }
+            catch (PersonException personException)
+            {
+                return Json(personException.Message, JsonRequestBehavior.DenyGet);
+            }
+
+            return new HttpStatusCodeResult(HttpStatusCode.OK);
+        }
+
+
         [HttpGet]
         public JsonResult GetAllPersons()
         {
@@ -52,21 +99,6 @@ namespace AgeRanger.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddPerson(ConsolidatedPerson person)
-        {
-            if (ModelState.IsValid)
-            {
-                var result = personService.AddPerson(person);
-                if (result)
-                {
-                    return new HttpStatusCodeResult(HttpStatusCode.OK);
-                }
-            }
-
-            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        }
-
-        [HttpPost]
         public ActionResult UpdatePerson(ConsolidatedPerson person)
         {
             try
@@ -81,25 +113,6 @@ namespace AgeRanger.Controllers
             return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
 
-        [HttpPost]
-        public ActionResult DeletePerson(long id)
-        {
-            var person = personService.GetPerson(id);
-            if (person == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.NoContent);
-            }
-
-            try
-            {
-                personService.DeletePerson(id);
-            }
-            catch (PersonException personException)
-            {
-                return Json(personException.Message, JsonRequestBehavior.DenyGet);
-            }
-
-            return new HttpStatusCodeResult(HttpStatusCode.OK);
-        }
+        #endregion
     }
 }

@@ -4,6 +4,8 @@ namespace AgeRanger.Domain.Exceptions
 {
     public class PersonException : Exception
     {
+        #region Constructor
+
         public PersonException(string message) : base(message)
         {
         }
@@ -12,5 +14,7 @@ namespace AgeRanger.Domain.Exceptions
             base(message, innerException)
         {
         }
+
+        #endregion  
     }
 }
