@@ -20,7 +20,7 @@ Wanted to add more of a wholistic view so decided to sacrifice some time on doin
 
 1. [Done] Edit and Delete functionality with minial effort. Reusable for WebAPI 
 2. [Done] Confirmed functionality in Chrome, IE and Edge. 
-3. [Done] Basic functional test example creating a test person and asserting the values return.
+3. [Done] Basic functional test example creating a test person and asserting the values returned.
 
 **Solution Structure**
 
