@@ -24,7 +24,7 @@ Wanted to add more of a wholistic view so decided to sacrifice some time on doin
 
 **Solution Structure**
 
-*Projects*
+* Projects
 
 - AgeRanger - ASP.NET MVC Web Site with a SPA using AngularJS
 - AgeRanger.Data - Repository Implementation that we can swap out when the DBA's goto SQL Server
@@ -33,7 +33,7 @@ Wanted to add more of a wholistic view so decided to sacrifice some time on doin
 - AgeRanger.Infrastructure - Ninject Modules used for Dependency Injection. This way its easy to test the bindings
 - AgeRanger.Interfaces - Split out Data Interfaces as we want to swap out their implementation later and reuse the entities.
 
-* Test Projects*
+* Test Projects
 
 - AgeRanger.Tests.Unit - Basic unit test that can be executed and has no dependancies
 - AgeRanger.Tests.Integration - Basic Integration tests that may have a dependancy on disk, network etc.
