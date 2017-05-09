@@ -26,12 +26,12 @@ Wanted to add more of a wholistic view so decided to sacrifice some time on doin
 
 - AgeRanger - ASP.NET MVC Web Site with a SPA using AngularJS
 - AgeRanger.Data - Repository Implementation that we can swap out when the DBA's goto SQL Server
-- AgeRanger.Domain - Domain Sriver Design Approach which will house our Factories, Service and much more
+- AgeRanger.Domain - Domain Driven Design Approach which will house our Factories, Service and much more
 - AgeRanger.Entities - Entities that we can reuse
-- AgeRanger.Infrastructure - Ninject Modules used for Dependency Injection. This way its easy to test thne bindings
+- AgeRanger.Infrastructure - Ninject Modules used for Dependency Injection. This way its easy to test the bindings
 - AgeRanger.Interfaces - Split out Data Interfaces as we want to swap out their implementation later and reuse the entities.
 
-*NuGet Packages*
+**NuGet Packages**
 
 Only listing packages that I spesifically added.
 
@@ -53,8 +53,8 @@ Only listing packages that I spesifically added.
 2. Duplicate check when adding new person
 3. Error Handling in PersonController to improve feedback to UI
 4. ModelState Validation and display on UI
-5 Sleek popups for when saving, delting or editing occured
-6 Confirmation dialogs where appropriate
+5. Sleek popups for when saving, delting or editing occured
+6. Confirmation dialogs where appropriate
 
 **Testing Things TODO**
 
