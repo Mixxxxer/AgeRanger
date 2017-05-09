@@ -15,6 +15,7 @@ namespace AgeRanger.Tests.Functional
         }
 
         [TestMethod]
+        [TestCategory("Functional-UI")]
         public void Add_Displays_Div_And_Providing_Detail_Creates_New_Person()
         {
             webDriver.FindElement(By.Id("addbtn")).Click();
