@@ -72,8 +72,12 @@
   <ItemGroup>
     <Compile Include="Data\Entities\AgeGroupTests.cs" />
     <Compile Include="Data\Entities\PersonTests.cs" />
+    <Compile Include="Domain\Exceptions\PersonExceptionTests.cs" />
+    <Compile Include="Domain\Models\ConsolidatedPersonTests.cs" />
     <Compile Include="Domain\Services\PersonServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Web\Controllers\PersonControllerTests.cs" />
+    <Compile Include="Web\Models\PersonViewModelTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -92,6 +96,7 @@
       <Name>AgeRanger.Interfaces</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

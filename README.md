@@ -45,6 +45,8 @@ Added a TODO section to indicate that additional elements have been throught of 
 - AgeRanger.Tests.Integration - Basic Integration tests that may have a dependancy on disk, network etc.
 - AgeRanger.Tests.Functional - Basic functional test demoinstrating selenium web driver.
 
+NOTE: I have not made an attempt to complete code coverage but ranther attempted to demonstrate my understanding of the various types of testing.
+
 **NuGet Packages**
 
 Only listing packages that I spesifically added.
