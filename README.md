@@ -20,8 +20,10 @@ Wanted to add more of a wholistic view so decided to sacrifice some time on doin
 
 1. [Done] Edit and Delete functionality with minial effort. Reusable for WebAPI 
 2. [Done] Confirmed functionality in Chrome, IE and Edge. 
+3. [Done] Basic functional test example creating a test person and asserting the values return.
 
 **Solution Structure**
+
 *Projects*
 
 - AgeRanger - ASP.NET MVC Web Site with a SPA using AngularJS
@@ -30,6 +32,12 @@ Wanted to add more of a wholistic view so decided to sacrifice some time on doin
 - AgeRanger.Entities - Entities that we can reuse
 - AgeRanger.Infrastructure - Ninject Modules used for Dependency Injection. This way its easy to test the bindings
 - AgeRanger.Interfaces - Split out Data Interfaces as we want to swap out their implementation later and reuse the entities.
+
+* Test Projects*
+
+- AgeRanger.Tests.Unit - Basic unit test that can be executed and has no dependancies
+- AgeRanger.Tests.Integration - Basic Integration tests that may have a dependancy on disk, network etc.
+- AgeRanger.Tests.Functional - Basic functional test demoinstrating selenium web driver.
 
 **NuGet Packages**
 
@@ -40,6 +48,7 @@ Only listing packages that I spesifically added.
 3. AngularJS - Needs no introduction
 4. MoQ - Mocking framework for unit testing
 5. Fluent Assertions - Makes tests more readable
+6. Selenium Web Driver with the Chrome Driver
 
 **Things TODO**
 
@@ -60,7 +69,7 @@ Only listing packages that I spesifically added.
 
 1. Test Coverage - JavaScript portions of the code can use Jasmin / Chutzpa or similar
 2. Test Coverage - Remaining C# Portions of the Code
-3. Test Coverage - Atomated functional test using Selenium to drive the front end
+3. Test Coverage - Automated functional test using Selenium to drive the front end
 4. Browser Based Testing - FireFox and Safari
 
 **Cool Things TODO**

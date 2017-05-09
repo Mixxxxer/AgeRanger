@@ -26,6 +26,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgeRanger.Entities", "AgeRa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgeRanger.Infrastructure", "AgeRanger.Infrastructure\AgeRanger.Infrastructure.csproj", "{BBDB5515-F2D8-458B-A9A5-CFE012774561}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgeRanger.Tests.Functional", "AgeRanger.Tests.Functional\AgeRanger.Tests.Functional.csproj", "{F32123FC-50E1-4E73-9A89-BED54C0E32A1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -64,6 +66,10 @@ Global
 		{BBDB5515-F2D8-458B-A9A5-CFE012774561}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BBDB5515-F2D8-458B-A9A5-CFE012774561}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BBDB5515-F2D8-458B-A9A5-CFE012774561}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F32123FC-50E1-4E73-9A89-BED54C0E32A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F32123FC-50E1-4E73-9A89-BED54C0E32A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F32123FC-50E1-4E73-9A89-BED54C0E32A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F32123FC-50E1-4E73-9A89-BED54C0E32A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -71,5 +77,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{9448A688-8C40-4498-AC5C-4FFE27C13B69} = {D123381A-FFD1-4C14-AD55-25EB4FD75E99}
 		{FE39D676-5759-4F84-BE9B-5CF650889C7B} = {D123381A-FFD1-4C14-AD55-25EB4FD75E99}
+		{F32123FC-50E1-4E73-9A89-BED54C0E32A1} = {D123381A-FFD1-4C14-AD55-25EB4FD75E99}
 	EndGlobalSection
 EndGlobal
