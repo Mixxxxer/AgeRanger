@@ -36,22 +36,22 @@ Added a TODO section to indicate that additional elements have been throught of 
 - AgeRanger.Data - Repository Implementation that we can swap out when the DBA's goto SQL Server
 - AgeRanger.Domain - Domain Driven Design Approach which will house our Factories, Service and much more
 - AgeRanger.Entities - Entities that we can reuse
-- AgeRanger.Infrastructure - Ninject Modules used for Dependency Injection. This way its easy to test the bindings
+- AgeRanger.Infrastructure - Ninject Modules used for Dependency  Injection. This way its easy to test the bindings
 - AgeRanger.Interfaces - Split out Data Interfaces as we want to swap out their implementation later and reuse the entities.
 
 * Test Projects
 
-- AgeRanger.Tests.Unit - Basic unit test that can be executed and has no dependancies
-- AgeRanger.Tests.Integration - Basic Integration tests that may have a dependancy on disk, network etc.
-- AgeRanger.Tests.Functional - Basic functional test demoinstrating selenium web driver.
+- AgeRanger.Tests.Unit - Basic unit test that can be executed and has no dependencies 
+- AgeRanger.Tests.Integration - Basic Integration tests that may have a dependency on disk, network etc.
+- AgeRanger.Tests.Functional - Basic functional test demonstrating selenium web driver.
 
-NOTE: I have not made an attempt to complete code coverage but ranther attempted to demonstrate my understanding of the various types of testing.
+NOTE: I have not made an attempt to complete code coverage but rather attempted to demonstrate my understanding of the various types of testing.
 
 **NuGet Packages**
 
 Only listing packages that I spesifically added.
 
-1. Ninject - My prefered choice for dependancy injection
+1. Ninject - My prefered choice for dependency injection
 2. SQLite - SQLLite and EF Providers
 3. AngularJS - Needs no introduction
 4. MoQ - Mocking framework for unit testing
