@@ -2,11 +2,11 @@
 
 - Visual Studio 2015 Enterprise
 - Framework 4.5.2
-- Remember to restore the NuGet packagaes before building.
+- Remember to restore the NuGet packages before building.
 - May have to change web.config to update the location of the SQLite DB
 - If the DB does not exists, AgeRanger will create and seed it!
 
-Added a TODO section to indicate that additional elements have been throught of but not spesifically implemented. 
+Added a TODO section to indicate that additional elements have been thought of but not specifically implemented. 
 
 **Requirements**
 
@@ -24,7 +24,7 @@ Added a TODO section to indicate that additional elements have been throught of 
 
 **Extras**
 
-1. [Done] Edit and Delete functionality with minial effort. Reusable for WebAPI 
+1. [Done] Edit and Delete functionality with minimal effort. Reusable for WebAPI 
 2. [Done] Confirmed functionality in Chrome, IE and Edge. 
 3. [Done] Basic functional test example creating a test person and asserting the values returned.
 
@@ -49,7 +49,7 @@ NOTE: I have not made an attempt to complete code coverage but rather attempted 
 
 **NuGet Packages**
 
-Only listing packages that I spesifically added.
+Only listing packages that I specifically added.
 
 1. Ninject - My prefered choice for dependency injection
 2. SQLite - SQLLite and EF Providers
@@ -71,7 +71,7 @@ Only listing packages that I spesifically added.
 2. Duplicate check when adding new person
 3. Error Handling in PersonController to improve feedback to UI
 4. ModelState Validation and display on UI
-5. Sleek popups for when saving, delting or editing occured
+5. Sleek popups for when saving, deleting or editing occurred
 6. Confirmation dialogs where appropriate
 
 **Testing Things TODO**
