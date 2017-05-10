@@ -61,6 +61,7 @@ Only listing packages that I spesifically added.
 **Things TODO**
 
 1. Security - Security consideration
+	- Encrypt sensitive data for transfer
 	- Cross Site Anti Forgery
 	- Forms / Windows Authentication
 	- Role Based Security 
