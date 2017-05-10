@@ -29,7 +29,7 @@ namespace AgeRanger.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            return View("Index");
         }
 
         public ActionResult AddPerson(ConsolidatedPerson person)
