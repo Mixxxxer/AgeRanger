@@ -6,6 +6,7 @@ using AgeRanger.Domain.Models;
 using AgeRanger.Domain.Services;
 using AgeRanger.Entities;
 using AgeRanger.Interfaces.Data.Repositories;
+using AgeRanger.Tests.Unit.Helpers;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -119,7 +120,7 @@ namespace AgeRanger.Tests.Unit.Domain.Services
         {
             mockRepo.Setup(m => m.GetPersons()).Returns(new List<Person>()
             {
-                new Person() { Id = 1, Age = 22, FirstName = "Bob", LastName = "Jones" }
+                PersonBuilder.GetPerson()
             });
 
             var service = new PersonService(mockRepo.Object);
@@ -131,14 +132,9 @@ namespace AgeRanger.Tests.Unit.Domain.Services
         [TestCategory("Unit-Services-Range")]
         public void AddPerson_Returns_True_After_Successfull_Add()
         {
-            var consolidatedPerson = new ConsolidatedPerson()
-            {
-                Id = 1, FirstName = "Bob", LastName = "Jones", Age = 60
-            };
-
             var service = new PersonService(mockRepo.Object);
 
-            var result = service.AddPerson(consolidatedPerson);
+            var result = service.AddPerson(ConsolidatedPersonBuilder.GetConsolidatedPerson());
 
             mockRepo.Verify(m => m.AddPerson(It.IsAny<Person>()), Times.Once);
 
@@ -153,14 +149,9 @@ namespace AgeRanger.Tests.Unit.Domain.Services
             mockRepo.Setup(m => m.AddPerson(It.IsAny<Person>()))
                 .Throws(new Exception(""));
 
-            var consolidatedPerson = new ConsolidatedPerson()
-            {
-                Id = 1, FirstName = "Bob", LastName = "Jones", Age = 60
-            };
-
             var service = new PersonService(mockRepo.Object);
 
-            service.AddPerson(consolidatedPerson);
+            service.AddPerson(ConsolidatedPersonBuilder.GetConsolidatedPerson());
         }
 
         [TestMethod]
@@ -181,10 +172,7 @@ namespace AgeRanger.Tests.Unit.Domain.Services
         [TestCategory("Unit-Services-Range")]
         public void Delete_Returns_True_After_Successful_Delete()
         {
-            mockRepo.Setup(m => m.GetPerson(It.IsAny<long>())).Returns(new Person()
-            {
-                Id = 1, FirstName = "Bob", LastName = "Jones", Age = 60
-            });
+            mockRepo.Setup(m => m.GetPerson(It.IsAny<long>())).Returns(PersonBuilder.GetPerson);
 
             var service = new PersonService(mockRepo.Object);
 
@@ -201,10 +189,7 @@ namespace AgeRanger.Tests.Unit.Domain.Services
         [ExpectedException(typeof(PersonException))]
         public void DeletePerson_Throws_PersonException_When_Db_Error_Occurs()
         {
-            mockRepo.Setup(m => m.GetPerson(It.IsAny<long>())).Returns(new Person()
-            {
-                Id = 1, FirstName = "Bob", LastName = "Jones", Age = 60
-            });
+            mockRepo.Setup(m => m.GetPerson(It.IsAny<long>())).Returns(PersonBuilder.GetPerson);
 
             mockRepo.Setup(m => m.DeletePerson(It.IsAny<Person>()))
                 .Throws(new Exception(""));
@@ -212,6 +197,48 @@ namespace AgeRanger.Tests.Unit.Domain.Services
             var service = new PersonService(mockRepo.Object);
 
             service.DeletePerson(1);
+        }
+
+        [TestMethod]
+        [TestCategory("Unit-Services-Range")]
+        public void UpdatePerson_Returns_False_When_Person_Not_Found()
+        {
+            Person notFound = null;
+
+            mockRepo.Setup(m => m.GetPerson(It.IsAny<long>())).Returns(notFound);
+
+            var service = new PersonService(mockRepo.Object);
+            var result = service.UpdatePerson(new ConsolidatedPerson() {Id = 1});
+
+            result.Should().Be(false);
+        }
+
+        [TestMethod]
+        [TestCategory("Unit-Services-Range")]
+        public void UpdatePerson_Returns_True_After_Successful_Update()
+        {
+            mockRepo.Setup(m => m.GetPerson(It.IsAny<long>())).Returns(PersonBuilder.GetPerson);
+
+            var service = new PersonService(mockRepo.Object);
+            var result = service.UpdatePerson(new ConsolidatedPerson());
+
+            mockRepo.Verify(m => m.UpdatePerson(It.IsAny<Person>(), It.IsAny<Person>()), Times.Once);
+
+            result.Should().Be(true);
+        }
+
+        [TestMethod]
+        [TestCategory("Unit-Services-Range")]
+        [ExpectedException(typeof(PersonException))]
+        public void UpdatePerson_Throws_PersonException_When_Db_Error_Occurs()
+        {
+            mockRepo.Setup(m => m.GetPerson(It.IsAny<long>())).Returns(PersonBuilder.GetPerson);
+
+            mockRepo.Setup(m => m.GetPerson(It.IsAny<long>())).Throws(new Exception());
+
+            var service = new PersonService(mockRepo.Object);
+
+            service.UpdatePerson(new ConsolidatedPerson());
         }
     }
 }
