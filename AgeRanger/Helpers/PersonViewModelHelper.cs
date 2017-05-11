@@ -1,15 +1,25 @@
-﻿using AgeRanger.Domain.Models;
+﻿using System.Collections.Generic;
+using System.Linq;
+using AgeRanger.Domain.Models;
 using AgeRanger.Models;
 
 namespace AgeRanger.Helpers
 {
-    public interface IPersonViewModelHelper
-    {
-        PersonViewModel FromConsolidatedPerson(ConsolidatedPerson consolidatedPerson);
-    }
-
     public class PersonViewModelHelper : IPersonViewModelHelper
     {
+        public IEnumerable<PersonViewModel> FromConsolidatedPersons(IList<ConsolidatedPerson> persons)
+        {
+            return persons
+                .Select(x => new PersonViewModel()
+                {
+                    Id = x.Id,
+                    FirstName = x.FirstName,
+                    LastName = x.LastName,
+                    Age = x.Age,
+                    AgeRangeDescription = x.AgeRangeDescription
+                });
+        }
+
         public PersonViewModel FromConsolidatedPerson(ConsolidatedPerson consolidatedPerson)
         {
             return new PersonViewModel()

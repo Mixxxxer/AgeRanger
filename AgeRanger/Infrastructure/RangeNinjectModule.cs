@@ -1,5 +1,6 @@
 ﻿using AgeRanger.Data.Contexts;
 using AgeRanger.Data.Repositories;
+using AgeRanger.Domain.Helpers;
 using AgeRanger.Domain.Services;
 using AgeRanger.Helpers;
 using Ninject.Modules;
@@ -16,6 +17,7 @@ namespace AgeRanger.Infrastructure
             Bind<IRangeRepository>().To<RangeRepository>();
 
             Bind<IPersonService>().To<PersonService>();
+            Bind<IPersonServiceHelper>().To<PersonServiceHelper>();
             Bind<IPersonViewModelHelper>().To<PersonViewModelHelper>();
         }
 

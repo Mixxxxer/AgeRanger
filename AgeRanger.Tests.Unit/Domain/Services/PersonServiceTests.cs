@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using AgeRanger.Data.Repositories;
 using AgeRanger.Domain.Exceptions;
+using AgeRanger.Domain.Helpers;
 using AgeRanger.Domain.Models;
 using AgeRanger.Domain.Services;
 using AgeRanger.Entities;
@@ -40,7 +41,7 @@ namespace AgeRanger.Tests.Unit.Domain.Services
                 new Person() { Id = 1, Age = 1, FirstName = "Bob", LastName = "Jones" }
             });
 
-            var service = new PersonService(mockRepo.Object);
+            var service = new PersonService(mockRepo.Object, new PersonServiceHelper());
 
             var persons = service.GetPersons();
 
@@ -60,7 +61,7 @@ namespace AgeRanger.Tests.Unit.Domain.Services
                 new Person() { Id = 1, Age = 3, FirstName = "Billy", LastName = "Jean" }
             });
 
-            var service = new PersonService(mockRepo.Object);
+            var service = new PersonService(mockRepo.Object, new PersonServiceHelper());
 
             var persons = service.GetPersons();
 
@@ -80,7 +81,7 @@ namespace AgeRanger.Tests.Unit.Domain.Services
                 new Person() { Id = 1, Age = 5000, FirstName = "Mary", LastName = "Sue" }
             });
 
-            var service = new PersonService(mockRepo.Object);
+            var service = new PersonService(mockRepo.Object, new PersonServiceHelper());
 
             var persons = service.GetPersons();
 
@@ -102,7 +103,7 @@ namespace AgeRanger.Tests.Unit.Domain.Services
                 new Person() { Id = 1, Age = 5000, FirstName = "Mary", LastName = "Sue" }
             });
 
-            var service = new PersonService(mockRepo.Object);
+            var service = new PersonService(mockRepo.Object, new PersonServiceHelper());
 
             var persons = service.GetPersons();
 
@@ -123,7 +124,7 @@ namespace AgeRanger.Tests.Unit.Domain.Services
                 PersonBuilder.GetPerson()
             });
 
-            var service = new PersonService(mockRepo.Object);
+            var service = new PersonService(mockRepo.Object, new PersonServiceHelper());
 
             service.GetPersons();
         }
@@ -132,7 +133,7 @@ namespace AgeRanger.Tests.Unit.Domain.Services
         [TestCategory("Unit-Services-Range")]
         public void AddPerson_Returns_True_After_Successfull_Add()
         {
-            var service = new PersonService(mockRepo.Object);
+            var service = new PersonService(mockRepo.Object, new PersonServiceHelper());
 
             var result = service.AddPerson(ConsolidatedPersonBuilder.GetConsolidatedPerson());
 
@@ -149,7 +150,7 @@ namespace AgeRanger.Tests.Unit.Domain.Services
             mockRepo.Setup(m => m.AddPerson(It.IsAny<Person>()))
                 .Throws(new Exception(""));
 
-            var service = new PersonService(mockRepo.Object);
+            var service = new PersonService(mockRepo.Object, new PersonServiceHelper());
 
             service.AddPerson(ConsolidatedPersonBuilder.GetConsolidatedPerson());
         }
@@ -162,7 +163,7 @@ namespace AgeRanger.Tests.Unit.Domain.Services
 
             mockRepo.Setup(m => m.GetPerson(It.IsAny<long>())).Returns(notFound);
 
-            var service = new PersonService(mockRepo.Object);
+            var service = new PersonService(mockRepo.Object, new PersonServiceHelper());
             var result = service.DeletePerson(1);
 
             result.Should().Be(false);
@@ -174,7 +175,7 @@ namespace AgeRanger.Tests.Unit.Domain.Services
         {
             mockRepo.Setup(m => m.GetPerson(It.IsAny<long>())).Returns(PersonBuilder.GetPerson);
 
-            var service = new PersonService(mockRepo.Object);
+            var service = new PersonService(mockRepo.Object, new PersonServiceHelper());
 
             var result = service.DeletePerson(1);
 
@@ -194,7 +195,7 @@ namespace AgeRanger.Tests.Unit.Domain.Services
             mockRepo.Setup(m => m.DeletePerson(It.IsAny<Person>()))
                 .Throws(new Exception(""));
 
-            var service = new PersonService(mockRepo.Object);
+            var service = new PersonService(mockRepo.Object, new PersonServiceHelper());
 
             service.DeletePerson(1);
         }
@@ -207,7 +208,7 @@ namespace AgeRanger.Tests.Unit.Domain.Services
 
             mockRepo.Setup(m => m.GetPerson(It.IsAny<long>())).Returns(notFound);
 
-            var service = new PersonService(mockRepo.Object);
+            var service = new PersonService(mockRepo.Object, new PersonServiceHelper());
             var result = service.UpdatePerson(new ConsolidatedPerson() {Id = 1});
 
             result.Should().Be(false);
@@ -219,7 +220,7 @@ namespace AgeRanger.Tests.Unit.Domain.Services
         {
             mockRepo.Setup(m => m.GetPerson(It.IsAny<long>())).Returns(PersonBuilder.GetPerson);
 
-            var service = new PersonService(mockRepo.Object);
+            var service = new PersonService(mockRepo.Object, new PersonServiceHelper());
             var result = service.UpdatePerson(new ConsolidatedPerson());
 
             mockRepo.Verify(m => m.UpdatePerson(It.IsAny<Person>(), It.IsAny<Person>()), Times.Once);
@@ -236,7 +237,7 @@ namespace AgeRanger.Tests.Unit.Domain.Services
 
             mockRepo.Setup(m => m.GetPerson(It.IsAny<long>())).Throws(new Exception());
 
-            var service = new PersonService(mockRepo.Object);
+            var service = new PersonService(mockRepo.Object, new PersonServiceHelper());
 
             service.UpdatePerson(new ConsolidatedPerson());
         }

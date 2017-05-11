@@ -3,75 +3,39 @@ using System.Collections.Generic;
 using System.Linq;
 using AgeRanger.Data.Repositories;
 using AgeRanger.Domain.Exceptions;
+using AgeRanger.Domain.Helpers;
 using AgeRanger.Domain.Models;
-using AgeRanger.Entities;
 
 namespace AgeRanger.Domain.Services
 {
-    public interface IPersonService
-    {
-        #region Public Methods
-
-        /// <summary>
-        /// Adds a new person to the repository
-        /// </summary>
-        bool AddPerson(ConsolidatedPerson person);
-
-        /// <summary>
-        /// Removes a person from the repository
-        /// </summary>
-        bool DeletePerson(long id);
-
-        /// <summary>
-        /// Finds a person based on the given Id
-        /// </summary>
-        ConsolidatedPerson GetPerson(long id);
-
-        /// <summary>
-        /// Returns a list of all known persons
-        /// </summary>
-        IList<ConsolidatedPerson> GetPersons();
-
-        /// <summary>
-        /// Updates the details of a person based on the given Id
-        /// </summary>
-        bool UpdatePerson(ConsolidatedPerson person);
-
-        #endregion  
-    }
-
     public class PersonService : IPersonService
     {
         #region Injected Members
 
         private readonly IRangeRepository rangeRepository;
 
+        private readonly IPersonServiceHelper personServiceHelper;
+
         #endregion
 
         #region Constructor
 
-        public PersonService(IRangeRepository rangeRepository)
+        public PersonService(IRangeRepository rangeRepository, 
+            IPersonServiceHelper personServiceHelper)
         {
             this.rangeRepository = rangeRepository;
+            this.personServiceHelper = personServiceHelper;
         }
 
         #endregion
 
         #region Public Methods
 
-        public bool AddPerson(ConsolidatedPerson person)
+        public bool AddPerson(ConsolidatedPerson consolidatedPerson)
         {
             try
             {
-                var entity = new Person()
-                {
-                    Id = person.Id,
-                    FirstName = person.FirstName,
-                    LastName = person.LastName,
-                    Age = person.Age
-                };
-
-                rangeRepository.AddPerson(entity);
+                rangeRepository.AddPerson(personServiceHelper.ToEntity(consolidatedPerson));
             }
             catch (Exception exception)
             {
@@ -85,12 +49,12 @@ namespace AgeRanger.Domain.Services
         {
             try
             {
-                var person = rangeRepository.GetPerson(id);
+                var entity = rangeRepository.GetPerson(id);
 
-                if (person == null)
+                if (entity == null)
                     return false;
 
-                rangeRepository.DeletePerson(person);
+                rangeRepository.DeletePerson(entity);
             }
             catch (Exception exception)
             {
@@ -98,11 +62,6 @@ namespace AgeRanger.Domain.Services
             }
 
             return true;
-        }
-
-        public string GetDescriptionForAge(IEnumerable<AgeGroup> ageGroups, int age)
-        {
-            return ageGroups.First(range => age >= range.MinAge && age < range.MaxAge).Description;
         }
 
         public ConsolidatedPerson GetPerson(long id)
@@ -114,14 +73,7 @@ namespace AgeRanger.Domain.Services
 
             var ageGroups = rangeRepository.GetAgeGroups();
 
-            return new ConsolidatedPerson()
-            {
-                Id = person.Id,
-                FirstName = person.FirstName,
-                LastName = person.LastName,
-                Age = person.Age,
-                AgeRangeDescription = GetDescriptionForAge(ageGroups, person.Age)
-            };
+            return personServiceHelper.ToConsolidatedPerson(ageGroups, person);
         }
 
         public IList<ConsolidatedPerson> GetPersons()
@@ -129,34 +81,21 @@ namespace AgeRanger.Domain.Services
             var persons = rangeRepository.GetPersons();
             var ageGroups = rangeRepository.GetAgeGroups();
 
-            var personRanges = persons.Select(person => new ConsolidatedPerson()
-            {
-                Id = person.Id,
-                FirstName = person.FirstName,
-                LastName = person.LastName,
-                Age = person.Age,
-                AgeRangeDescription = GetDescriptionForAge(ageGroups, person.Age)
-            });
-
-            return personRanges.ToList();
+            return personServiceHelper
+                .ToConsolidatedPersons(ageGroups, persons)
+                .ToList();
         }
 
-        public bool UpdatePerson(ConsolidatedPerson person)
+        public bool UpdatePerson(ConsolidatedPerson consolidatedPerson)
         {
             try
             {
-                var model = rangeRepository.GetPerson(person.Id);
+                var entity = rangeRepository.GetPerson(consolidatedPerson.Id);
 
-                if (model == null)
+                if (entity == null)
                     return false;
 
-                rangeRepository.UpdatePerson(model, new Person()
-                {
-                    Id = person.Id,
-                    FirstName = person.FirstName,
-                    LastName = person.LastName,
-                    Age = person.Age
-                });
+                rangeRepository.UpdatePerson(entity, personServiceHelper.ToEntity(consolidatedPerson));
             }
             catch (Exception exception)
             {

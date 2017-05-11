@@ -1,10 +1,9 @@
-﻿using System.Linq;
-using System.Net;
+﻿using System.Net;
 using System.Web.Mvc;
 using AgeRanger.Domain.Exceptions;
 using AgeRanger.Domain.Models;
 using AgeRanger.Domain.Services;
-using AgeRanger.Models;
+using AgeRanger.Helpers;
 
 namespace AgeRanger.Controllers
 {
@@ -14,13 +13,17 @@ namespace AgeRanger.Controllers
 
         private readonly IPersonService personService;
 
+        private readonly IPersonViewModelHelper personViewModelHelper;
+
         #endregion
 
         #region Constructor
 
-        public PersonController(IPersonService personService)
+        public PersonController(IPersonService personService, 
+            IPersonViewModelHelper personViewModelHelper)
         {
             this.personService = personService;
+            this.personViewModelHelper = personViewModelHelper;
         }
 
         #endregion
@@ -68,17 +71,10 @@ namespace AgeRanger.Controllers
 
         public JsonResult GetAllPersons()
         {
-            var persons = personService.GetPersons()
-                .Select(x => new PersonViewModel()
-                {
-                    Id = x.Id,
-                    FirstName = x.FirstName,
-                    LastName = x.LastName,
-                    Age = x.Age,
-                    AgeRangeDescription = x.AgeRangeDescription
-                });
+            var persons = personService.GetPersons();
 
-            return Json(persons, JsonRequestBehavior.AllowGet);
+            return Json(personViewModelHelper.FromConsolidatedPersons(persons), 
+                JsonRequestBehavior.AllowGet);
         }
         
         public JsonResult GetPerson(long id)
@@ -89,14 +85,8 @@ namespace AgeRanger.Controllers
                 return Json(null, JsonRequestBehavior.AllowGet);
             }
 
-            return Json(new PersonViewModel()
-            {
-                Id = person.Id,
-                FirstName = person.FirstName,
-                LastName = person.LastName,
-                Age = person.Age,
-                AgeRangeDescription = person.AgeRangeDescription
-            }, JsonRequestBehavior.AllowGet);
+            return Json(personViewModelHelper.FromConsolidatedPerson(person), 
+                JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult UpdatePerson(ConsolidatedPerson person)

@@ -41,8 +41,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exceptions\PersonException.cs" />
+    <Compile Include="Helpers\IPersonServiceHelper.cs" />
+    <Compile Include="Helpers\PersonServiceHelper.cs" />
     <Compile Include="Models\ConsolidatedPerson.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\IPersonService.cs" />
     <Compile Include="Services\PersonService.cs" />
   </ItemGroup>
   <ItemGroup />

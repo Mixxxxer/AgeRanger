@@ -1,7 +1,9 @@
 ﻿using System.Linq;
 using AgeRanger.Data.Contexts;
 using AgeRanger.Data.Repositories;
+using AgeRanger.Domain.Helpers;
 using AgeRanger.Domain.Services;
+using AgeRanger.Helpers;
 using AgeRanger.Infrastructure;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -23,7 +25,7 @@ namespace AgeRanger.Tests.Integration.Web.Infrastructure
 
         [TestMethod]
         [TestCategory("Integration-Infrastructure")]
-        public void Ninject_Kernel_Should_Return_Range_Context()
+        public void Ninject_Kernel_Should_Return_Person_Context()
         {
             var context = kernel.Get<IRangeDbContext>();
 
@@ -34,7 +36,7 @@ namespace AgeRanger.Tests.Integration.Web.Infrastructure
 
         [TestMethod]
         [TestCategory("Integration-Infrastructure")]
-        public void Ninject_Kernel_Should_Return_Range_Repository()
+        public void Ninject_Kernel_Should_Return_Person_Repository()
         {
             var repository = kernel.Get<IRangeRepository>();
 
@@ -45,7 +47,7 @@ namespace AgeRanger.Tests.Integration.Web.Infrastructure
 
         [TestMethod]
         [TestCategory("Integration-Infrastructure")]
-        public void Ninject_Kernel_Should_Return_Range_Service()
+        public void Ninject_Kernel_Should_Return_Person_Service()
         {
             var service = kernel.Get<IPersonService>();
 
@@ -54,6 +56,28 @@ namespace AgeRanger.Tests.Integration.Web.Infrastructure
             kernel.Release(service);
         }
 
+        [TestMethod]
+        [TestCategory("Integration-Infrastructure")]
+        public void Ninject_Kernel_Should_Return_Person_Service_Helper()
+        {
+            var service = kernel.Get<IPersonServiceHelper>();
+
+            service.Should().NotBeNull();
+
+            kernel.Release(service);
+        }
+
+
+        [TestMethod]
+        [TestCategory("Integration-Infrastructure")]
+        public void Ninject_Kernel_Should_Return_PersonViewModel_Helper()
+        {
+            var service = kernel.Get<IPersonViewModelHelper>();
+
+            service.Should().NotBeNull();
+
+            kernel.Release(service);
+        }
 
         [ClassCleanup]
         public static void Cleanup()

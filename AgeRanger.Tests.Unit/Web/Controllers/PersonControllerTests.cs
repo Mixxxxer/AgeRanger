@@ -2,6 +2,7 @@
 using AgeRanger.Controllers;
 using AgeRanger.Domain.Models;
 using AgeRanger.Domain.Services;
+using AgeRanger.Helpers;
 using AgeRanger.Tests.Unit.Helpers;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -17,7 +18,8 @@ namespace AgeRanger.Tests.Unit.Web.Controllers
         public void Index_Returns_Person_View()
         {
             var mockService = new Mock<IPersonService>();
-            var controller = new PersonController(mockService.Object);
+            var mockHelper = new Mock<IPersonViewModelHelper>();
+            var controller = new PersonController(mockService.Object, mockHelper.Object);
 
             var returned = controller.Index();
 
@@ -29,11 +31,12 @@ namespace AgeRanger.Tests.Unit.Web.Controllers
         public void AddPerson_Call_Service_When_ModelState_Valid()
         {
             var mockService = new Mock<IPersonService>();
+            var mockHelper = new Mock<IPersonViewModelHelper>();
 
             mockService.Setup(m => m.AddPerson(It.IsAny<ConsolidatedPerson>()))
                 .Returns(true);
 
-            var controller = new PersonController(mockService.Object);
+            var controller = new PersonController(mockService.Object, mockHelper.Object);
 
             var returned = controller
                 .AddPerson(ConsolidatedPersonBuilder.GetConsolidatedPerson());
@@ -49,7 +52,9 @@ namespace AgeRanger.Tests.Unit.Web.Controllers
         public void AddPerson_Returns_Badrequest_When_ModelState_Invalid()
         {
             var mockService = new Mock<IPersonService>();
-            var controller = new PersonController(mockService.Object);
+            var mockHelper = new Mock<IPersonViewModelHelper>();
+
+            var controller = new PersonController(mockService.Object, mockHelper.Object);
 
             controller.ModelState.AddModelError("a", "b");
 
