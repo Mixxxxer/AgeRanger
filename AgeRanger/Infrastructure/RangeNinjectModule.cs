@@ -1,11 +1,10 @@
 ﻿using AgeRanger.Data.Contexts;
 using AgeRanger.Data.Repositories;
 using AgeRanger.Domain.Services;
-using AgeRanger.Interfaces.Data.Contexts;
-using AgeRanger.Interfaces.Data.Repositories;
+using AgeRanger.Helpers;
 using Ninject.Modules;
 
-namespace AgeRanger.Infrastructure.Modules
+namespace AgeRanger.Infrastructure
 {
     public class RangeNinjectModule : NinjectModule
     {
@@ -17,6 +16,7 @@ namespace AgeRanger.Infrastructure.Modules
             Bind<IRangeRepository>().To<RangeRepository>();
 
             Bind<IPersonService>().To<PersonService>();
+            Bind<IPersonViewModelHelper>().To<PersonViewModelHelper>();
         }
 
         #endregion

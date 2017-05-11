@@ -47,13 +47,13 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\AgeRanger.Data\AgeRanger.Data.csproj">
+      <Project>{D77D817E-AFF3-4C16-B44D-D4796671913E}</Project>
+      <Name>AgeRanger.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AgeRanger.Entities\AgeRanger.Entities.csproj">
       <Project>{9180f571-4254-4eec-ad84-8d25d609941d}</Project>
       <Name>AgeRanger.Entities</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AgeRanger.Interfaces\AgeRanger.Interfaces.csproj">
-      <Project>{204ba21f-3afc-4b21-8574-a89c425cc05a}</Project>
-      <Name>AgeRanger.Interfaces</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

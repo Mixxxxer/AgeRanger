@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using AgeRanger.Data.Contexts;
 using AgeRanger.Entities;
-using AgeRanger.Interfaces.Data.Contexts;
-using AgeRanger.Interfaces.Data.Repositories;
 
 namespace AgeRanger.Data.Repositories
 {

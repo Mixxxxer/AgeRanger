@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using AgeRanger.Data.Repositories;
 using AgeRanger.Domain.Exceptions;
 using AgeRanger.Domain.Models;
 using AgeRanger.Domain.Services;
 using AgeRanger.Entities;
-using AgeRanger.Interfaces.Data.Repositories;
 using AgeRanger.Tests.Unit.Helpers;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;

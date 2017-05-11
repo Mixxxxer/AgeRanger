@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using AgeRanger.Entities;
 
-namespace AgeRanger.Interfaces.Data.Repositories
+namespace AgeRanger.Data.Repositories
 {
     public interface IRangeRepository
     {

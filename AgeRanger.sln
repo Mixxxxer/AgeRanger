@@ -20,11 +20,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgeRanger.Domain", "AgeRang
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgeRanger.Tests.Integration", "AgeRanger.Tests.Integration\AgeRanger.Tests.Integration.csproj", "{FE39D676-5759-4F84-BE9B-5CF650889C7B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgeRanger.Interfaces", "AgeRanger.Interfaces\AgeRanger.Interfaces.csproj", "{204BA21F-3AFC-4B21-8574-A89C425CC05A}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgeRanger.Entities", "AgeRanger.Entities\AgeRanger.Entities.csproj", "{9180F571-4254-4EEC-AD84-8D25D609941D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgeRanger.Infrastructure", "AgeRanger.Infrastructure\AgeRanger.Infrastructure.csproj", "{BBDB5515-F2D8-458B-A9A5-CFE012774561}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgeRanger.Tests.Functional", "AgeRanger.Tests.Functional\AgeRanger.Tests.Functional.csproj", "{F32123FC-50E1-4E73-9A89-BED54C0E32A1}"
 EndProject
@@ -54,18 +50,10 @@ Global
 		{FE39D676-5759-4F84-BE9B-5CF650889C7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE39D676-5759-4F84-BE9B-5CF650889C7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE39D676-5759-4F84-BE9B-5CF650889C7B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{204BA21F-3AFC-4B21-8574-A89C425CC05A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{204BA21F-3AFC-4B21-8574-A89C425CC05A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{204BA21F-3AFC-4B21-8574-A89C425CC05A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{204BA21F-3AFC-4B21-8574-A89C425CC05A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9180F571-4254-4EEC-AD84-8D25D609941D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9180F571-4254-4EEC-AD84-8D25D609941D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9180F571-4254-4EEC-AD84-8D25D609941D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9180F571-4254-4EEC-AD84-8D25D609941D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BBDB5515-F2D8-458B-A9A5-CFE012774561}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BBDB5515-F2D8-458B-A9A5-CFE012774561}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BBDB5515-F2D8-458B-A9A5-CFE012774561}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BBDB5515-F2D8-458B-A9A5-CFE012774561}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F32123FC-50E1-4E73-9A89-BED54C0E32A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F32123FC-50E1-4E73-9A89-BED54C0E32A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F32123FC-50E1-4E73-9A89-BED54C0E32A1}.Release|Any CPU.ActiveCfg = Release|Any CPU

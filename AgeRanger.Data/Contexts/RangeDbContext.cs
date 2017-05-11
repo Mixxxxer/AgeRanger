@@ -2,7 +2,6 @@
 using AgeRanger.Data.Configuration;
 using AgeRanger.Data.Initializers;
 using AgeRanger.Entities;
-using AgeRanger.Interfaces.Data.Contexts;
 
 namespace AgeRanger.Data.Contexts
 {

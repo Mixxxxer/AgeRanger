@@ -2,7 +2,6 @@
 using System.Diagnostics.CodeAnalysis;
 using AgeRanger.Data.Contexts;
 using AgeRanger.Entities;
-using AgeRanger.Interfaces.Data.Initializers;
 using SQLite.CodeFirst;
 
 namespace AgeRanger.Data.Initializers

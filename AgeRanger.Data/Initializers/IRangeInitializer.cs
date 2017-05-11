@@ -1,4 +1,4 @@
-﻿namespace AgeRanger.Interfaces.Data.Initializers
+﻿namespace AgeRanger.Data.Initializers
 {
     public interface IRangeInitializer
     {

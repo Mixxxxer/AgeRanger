@@ -68,14 +68,15 @@ namespace AgeRanger.Controllers
 
         public JsonResult GetAllPersons()
         {
-            var persons = personService.GetPersons().Select(x => new PersonViewModel()
-            {
-                Id = x.Id,
-                FirstName = x.FirstName,
-                LastName = x.LastName,
-                Age = x.Age,
-                AgeRangeDescription = x.AgeRangeDescription
-            });
+            var persons = personService.GetPersons()
+                .Select(x => new PersonViewModel()
+                {
+                    Id = x.Id,
+                    FirstName = x.FirstName,
+                    LastName = x.LastName,
+                    Age = x.Age,
+                    AgeRangeDescription = x.AgeRangeDescription
+                });
 
             return Json(persons, JsonRequestBehavior.AllowGet);
         }

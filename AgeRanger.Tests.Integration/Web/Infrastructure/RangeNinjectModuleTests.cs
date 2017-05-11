@@ -1,14 +1,14 @@
 ﻿using System.Linq;
+using AgeRanger.Data.Contexts;
+using AgeRanger.Data.Repositories;
 using AgeRanger.Domain.Services;
-using AgeRanger.Infrastructure.Modules;
-using AgeRanger.Interfaces.Data.Contexts;
-using AgeRanger.Interfaces.Data.Repositories;
+using AgeRanger.Infrastructure;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Ninject;
 using Ninject.Activation.Caching;
 
-namespace AgeRanger.Tests.Integration.Infrastructure
+namespace AgeRanger.Tests.Integration.Web.Infrastructure
 {
     [TestClass]
     public class RangeNinjectModuleTests

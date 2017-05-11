@@ -36,8 +36,6 @@ Added a TODO section to indicate that additional elements have been thought of b
 - AgeRanger.Data - Repository Implementation that we can swap out when the DBA's goto SQL Server
 - AgeRanger.Domain - Domain Driven Design Approach which will house our Factories, Service and much more
 - AgeRanger.Entities - Entities that we can reuse
-- AgeRanger.Infrastructure - Ninject Modules used for Dependency  Injection. This way its easy to test the bindings
-- AgeRanger.Interfaces - Split out Data Interfaces as we want to swap out their implementation later and reuse the entities.
 
 * Test Projects
 
