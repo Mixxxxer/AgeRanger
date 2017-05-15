@@ -21,6 +21,7 @@ Added a TODO section to indicate that additional elements have been thought of b
 
 1. [Done] Single Page Application using AngulatJS with MVC (Little extra effort)
 2. [Done] Consideration for DBA moving to SQL Server (Design considerations only)
+3. [Done] WebAPI. Added basic WebAPI allowing and update. WebAPI uses a API Key and Basic Authentication.  
 
 **Extras**
 
@@ -59,7 +60,7 @@ Only listing packages that I specifically added.
 **Things TODO**
 
 1. Security - Security consideration
-	- Encrypt sensitive data for transfer
+	- Encrypt sensitive data for transfer (SLL Certificates are the first thing we can do)
 	- Cross Site Anti Forgery
 	- Forms / Windows Authentication
 	- Role Based Security 
