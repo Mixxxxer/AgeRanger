@@ -28,7 +28,7 @@ namespace AgeRanger.Api.Handlers
                     if (decodedCredentials[0].Equals("username")
                         && decodedCredentials[1].Equals("password"))
                     {
-                        userName = "John Doe";
+                        userName = "bobjones";
                         return true;
                     }
                 }

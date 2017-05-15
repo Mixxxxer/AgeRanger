@@ -1,4 +1,5 @@
-﻿using AgeRanger.Data.Contexts;
+﻿using AgeRanger.Api.Helpers;
+using AgeRanger.Data.Contexts;
 using AgeRanger.Data.Repositories;
 using AgeRanger.Domain.Helpers;
 using AgeRanger.Domain.Services;
@@ -17,6 +18,8 @@ namespace AgeRanger.Api.Infrastructure
 
             Bind<IPersonService>().To<PersonService>();
             Bind<IPersonServiceHelper>().To<PersonServiceHelper>();
+
+            Bind<IConfigHelper>().To<ConfigHelper>();
         }
 
         #endregion
