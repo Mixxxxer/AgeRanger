@@ -11,6 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgeRanger.Tests.Unit", "Age
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{F8D3CF1F-AE9D-4C7E-97A5-B35F251E99E3}"
 	ProjectSection(SolutionItems) = preProject
+		Fiddler-PUT-API.png = Fiddler-PUT-API.png
 		README.md = README.md
 	EndProjectSection
 EndProject
