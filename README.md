@@ -34,6 +34,8 @@ Added a TODO section to indicate that additional elements have been thought of b
 * Projects
 
 - AgeRanger - ASP.NET MVC Web Site with a SPA using AngularJS
+- AgeRanger.Api - ASP.NET WebAPI which implement a PUT method for updaing using the shared Domain
+- AgeRanger.Api.Client - Rough console Application that uses the API to update the person
 - AgeRanger.Data - Repository Implementation that we can swap out when the DBA's goto SQL Server
 - AgeRanger.Domain - Domain Driven Design Approach which will house our Factories, Service and much more
 - AgeRanger.Entities - Entities that we can reuse
@@ -60,7 +62,7 @@ Only listing packages that I specifically added.
 **Things TODO**
 
 1. Security - Security consideration
-	- Encrypt sensitive data for transfer (SLL Certificates are the first thing we can do)
+	- Encrypt sensitive data for transfer (SLL are the first thing we can do)
 	- Cross Site Anti Forgery
 	- Forms / Windows Authentication
 	- Role Based Security 
