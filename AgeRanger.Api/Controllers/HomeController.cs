@@ -6,7 +6,7 @@ namespace AgeRanger.Api.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
+            ViewBag.Title = "Age Ranger API";
 
             return View();
         }
